@@ -201,7 +201,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>h', group = '[H]arpoon', mode = { 'n' } },
       }
     end,
   },
@@ -256,25 +256,26 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
+      local winPickers = {
+        find_files = {
+          hidden = true,
+          find_command = {
+            'rg',
+            '--files',
+            '--glob',
+            '!{.git/*,.svelte-kit/*,target/*,node_modules/*}',
+            '--path-separator',
+            '/',
+          },
+        },
+      }
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         -- https://github.com/nvim-telescope/telescope.nvim/issues/2446
         -- A Workaround for sveltekit on windows
-        pickers = {
-          find_files = {
-            hidden = true,
-            find_command = {
-              'rg',
-              '--files',
-              '--glob',
-              '!{.git/*,.svelte-kit/*,target/*,node_modules/*}',
-              '--path-separator',
-              '/',
-            },
-          },
-        },
+
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
@@ -284,6 +285,7 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        pickers = (vim.fn.has 'win32' == 1 or vim.fn.has 'win64' == 1) and winPickers or {},
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -823,7 +825,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the

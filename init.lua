@@ -239,6 +239,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = '[H]arpoon', mode = { 'n' } },
       }
+      }
     end,
   },
 

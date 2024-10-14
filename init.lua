@@ -237,15 +237,9 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-<<<<<<< HEAD
         { '<leader>h', group = '[H]arpoon', mode = { 'n' } },
       }
     end,
-=======
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-      },
-    },
->>>>>>> 4120893b8a1f31a0957f2f891f7fbef73ddfb9b1
   },
 
   -- NOTE: Plugins can specify dependencies.

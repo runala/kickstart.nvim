@@ -240,7 +240,6 @@ require('lazy').setup({
         { '<leader>h', group = '[H]arpoon', mode = { 'n' } },
       }
       }
-    end,
   },
 
   -- NOTE: Plugins can specify dependencies.

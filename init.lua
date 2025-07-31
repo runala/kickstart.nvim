@@ -27,8 +27,8 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 -- Indentation settings
-vim.o.tabstop = 2      -- Number of spaces that a <Tab> in the file counts for
-vim.o.shiftwidth = 2   -- Number of spaces to use for each step of (auto)indent
+vim.o.tabstop = 2 -- Number of spaces that a <Tab> in the file counts for
+vim.o.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
 vim.o.expandtab = true -- Use spaces instead of tabs
 vim.o.autoindent = true -- Copy indent from current line when starting a new line
 vim.o.smartindent = true -- Do smart autoindenting when starting a new line
@@ -156,9 +156,10 @@ require('lazy').setup({
           --   end,
           -- },
         },
+
         config = function()
           -- Load custom snippets
-          require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/custom/snippets"})
+          require('luasnip.loaders.from_lua').load { paths = '~/.config/nvim/lua/custom/snippets' }
         end,
       },
       'folke/lazydev.nvim',

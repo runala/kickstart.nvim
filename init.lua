@@ -159,7 +159,8 @@ require('lazy').setup({
 
         config = function()
           -- Load custom snippets
-          require('luasnip.loaders.from_lua').load { paths = '~/.config/nvim/lua/custom/snippets' }
+          local config_path = vim.fn.stdpath('config') .. '/lua/custom/snippets'
+          require('luasnip.loaders.from_lua').load { paths = config_path }
         end,
       },
       'folke/lazydev.nvim',

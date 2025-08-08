@@ -199,6 +199,21 @@ return {
         },
 
         svelte = {
+          -- Windows-specific on_attach function
+          on_attach = function(client, bufnr)
+            -- Workaround to trigger reloading JS/TS files
+            -- See https://github.com/sveltejs/language-tools/issues/2008
+            vim.api.nvim_create_autocmd('BufWritePost', {
+              pattern = { '*.js', '*.ts' },
+              group = vim.api.nvim_create_augroup('svelte_js_ts_file_watch', {}),
+              callback = function(ctx)
+                -- Convert Windows paths to file:// URI format for the notification
+                local uri = vim.uri_from_fname(ctx.match)
+                client:notify('$/onDidChangeTsOrJsFile', { uri = uri })
+              end,
+            })
+          end,
+
           settings = {
             svelte = {
               plugin = {

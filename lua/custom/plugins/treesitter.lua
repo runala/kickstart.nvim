@@ -1,6 +1,7 @@
 return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main', -- rewrite API; master is the legacy branch
     lazy = false, -- does not support lazy-loading
     build = ':TSUpdate',
     config = function()
